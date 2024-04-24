@@ -1,0 +1,119 @@
+@startuml Juego
+package logica{
+    interface Elementos
+    interface Niveles
+    interface Juego
+    Elementos : dibujar()
+    Elementos : animar()
+    
+    abstract class Personaje
+    abstract class Enemigo
+    abstract class Bloque
+    abstract class Potenciadores
+    abstract class Tubos
+    
+    Niveles o-- Elementos
+    Juego o-- Niveles
+    Personaje ..|> Elementos
+    Personaje : vidas
+    Personaje : velocidad
+    Personaje : tamaño
+    Personaje : Caminar()
+    Personaje : Saltar()
+    Personaje : Agacharse()
+    Personaje : Disparar()
+    Personaje : Crecer()
+    Personaje : Chocar()
+    Personaje : Morir()
+
+    Potenciadores ..|> Elementos
+    Potenciadores : tamaño 
+    Potenciadores : Chocar()
+
+    Bloque ..|> Elementos
+    Bloque : darPremio()
+    Bloque : romperse()
+
+    Enemigo ..|> Elementos
+    Enemigo : velocidad
+    Enemigo : tamaño 
+    Enemigo : Chocar()
+    Enemigo : Morir()
+    Enemigo : Ocultarse()
+
+    Tubos ..|> Elementos
+    Tubos : tamaño
+    Tubos : aparecerPlanta()
+
+    class Mario
+    Mario --|> Personaje
+    Mario : vidas
+    Mario : velocidad
+    Mario : tamaño 
+    Mario : Caminar()
+    Mario : Saltar()
+    Mario : Agacharse()
+    Mario : Disparar () : false
+    Mario : Crecer ()
+    Mario : Chocar()
+    Mario : Morir()
+
+    class Luigi
+    Luigi --|>Personaje
+    Luigi : vidas
+    Luigi : velocidad
+    Luigi : tamaño 
+    Luigi : Caminar()
+    Luigi : Saltar()
+    Luigi : Agacharse()
+    Luigi : Disparar () : false
+    Luigi : Crecer ()
+    Luigi : Chocar()
+    Luigi : Morir()
+
+    class BloqueDorado
+    BloqueDorado --|> Bloque
+    BloqueDorado : tamaño
+    BloqueDorado : darPremio()
+    class BloqueNormal 
+    BloqueNormal --|> Bloque
+    BloqueNormal : tamaño 
+    BloqueNormal : romperse()
+
+    class Hongo
+    Hongo --|>Enemigo
+    Hongo : tamaño 
+    Hongo : velocidad
+    Hongo : Chocar()
+    Hongo : Morir()    
+
+    class Tortuga  
+    Tortuga : tamaño
+    Tortuga : velocidad  
+    Tortuga --|>Enemigo
+    Tortuga : Chocar()
+    Tortuga : Morir()
+    Tortuga : Ocultarse()
+
+    class HongoCrecimiento
+    HongoCrecimiento --|>Potenciadores
+    HongoCrecimiento : tamaño
+    HongoCrecimiento : Chocar()
+
+    class Girasol 
+    Girasol --|>Potenciadores
+    Girasol : tamaño
+    Girasol : Chocar()
+
+    
+    class Tubo 
+    Tubo --|>Tubos
+    Tubo : tamaño
+    Tubo : aparecerPlanta()
+    
+
+}
+
+
+
+@enduml
